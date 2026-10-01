@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumière - Peluquería & Nail Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#faf7f5',
+                            100: '#f4ede7',
+                            200: '#e7d8cc',
+                            300: '#d7bcab',
+                            400: '#c59d87',
+                            500: '#b48169',
+                            600: '#9d6751',
+                            700: '#815141',
+                            800: '#6a4337',
+                            900: '#58392f',
+                        },
+                        rosewood: '#6b303b',
+                        blush: '#f9e8e6',
+                        goldaccent: '#d4af37'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(250,247,245,0.95) 0%, rgba(244,237,231,0.85) 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #faf7f5;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d7bcab;
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-brand-50 antialiased selection:bg-brand-200 selection:text-brand-900 custom-scrollbar">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand-800 text-brand-100 text-xs sm:text-sm py-2 px-4 text-center tracking-wide font-medium flex justify-between items-center max-w-full overflow-hidden">
+        <div class="hidden md:flex items-center gap-4 mx-auto">
+            <span><i class="fa-solid fa-sparkles text-goldaccent mr-1"></i> Promo del mes: 20% OFF en Manicura Gel + Tratamiento Capilar Hidratante</span>
+            <span class="opacity-40">|</span>
+            <span><i class="fa-solid fa-location-dot mr-1"></i> Calle Rosa Bella 124, Centro</span>
+        </div>
+        <div class="md:hidden mx-auto flex items-center gap-2">
+            <i class="fa-solid fa-sparkles text-goldaccent"></i>
+            <span>¡Reserva tu cita online y obtén 10% de descuento!</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-brand-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-brand-800 text-brand-50 flex items-center justify-center font-serif text-xl font-bold group-hover:bg-brand-700 transition">
+                    L
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-tight text-brand-900 block leading-none">Lumière</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-brand-600 font-semibold block mt-1">Hair & Nail Studio</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-700">
+                <a href="#inicio" class="hover:text-brand-600 transition">Inicio</a>
+                <a href="#servicios" class="hover:text-brand-600 transition">Servicios</a>
+                <a href="#calculadora" class="hover:text-brand-600 transition">Presupuestador</a>
+                <a href="#galeria" class="hover:text-brand-600 transition">Galería</a>
+                <a href="#equipo" class="hover:text-brand-600 transition">Equipo</a>
+                <a href="#resenas" class="hover:text-brand-600 transition">Opiniones</a>
+                <a href="#contacto" class="hover:text-brand-600 transition">Contacto</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="tel:+34912345678" class="text-xs font-semibold text-brand-800 hover:text-brand-600 flex items-center gap-2 px-3 py-2 rounded-full border border-brand-200 hover:bg-brand-100 transition">
+                    <i class="fa-solid fa-phone"></i> 912 345 678
+                </a>
+                <button onclick="openBookingModal()" class="bg-brand-800 hover:bg-brand-900 text-white font-medium text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <span>Reservar Cita</span>
+                </button>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-brand-100 focus:outline-none" aria-label="Abrir Menú">
+                <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-brand-100 px-6 py-6 space-y-4 shadow-xl">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Inicio</a>
+            <a href="#servicios" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Servicios y Tarifas</a>
+            <a href="#calculadora" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Calculadora de Packs</a>
+            <a href="#galeria" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Galería de Trabajos</a>
+            <a href="#equipo" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Nuestras Estilistas</a>
+            <a href="#resenas" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Reseñas de Clientes</a>
+            <a href="#contacto" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-brand-600 font-medium py-1">Ubicación y Horario</a>
+            <div class="pt-4 border-t border-brand-100 flex flex-col gap-3">
+                <button onclick="toggleMobileMenu(); openBookingModal()" class="w-full bg-brand-800 text-white py-3 rounded-xl font-medium shadow flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-calendar-check"></i> Reservar Cita Ahora
+                </button>
+                <a href="https://wa.me/34912345678" target="_blank" class="w-full bg-emerald-600 text-white py-2.5 rounded-xl font-medium text-center flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Contactar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100/80 border border-brand-200 text-brand-800 text-xs sm:text-sm font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Salón de Belleza Integral & Nail Bar
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-slate-900 leading-[1.15] font-bold">
+                        Tu cabello y tus uñas en manos de <span class="text-brand-600 italic">verdaderas artistas</span>.
+                    </h1>
+
+                    <p class="text-slate-600 text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Experimenta una atención personalizada de alta gama. Diseños de uñas exclusivos, coloración vanguardista (Balayage, Babylights) y tratamientos de hidratación profunda en un ambiente creado para tu máximo confort.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 bg-brand-800 hover:bg-brand-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                            <span>Agendar Mi Experiencia</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                        <a href="#servicios" class="w-full sm:w-auto px-8 py-4 bg-white/80 hover:bg-white text-slate-800 font-semibold rounded-full border border-brand-200 hover:border-brand-300 shadow-sm transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-list-ul text-brand-600"></i>
+                            <span>Ver Servicios y Precios</span>
+                        </a>
+                    </div>
+
+                    <!-- Social Proof / Key Stats -->
+                    <div class="pt-8 border-t border-brand-200/60 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <div class="font-serif text-2xl sm:text-3xl font-bold text-slate-900">+4.9 <i class="fa-solid fa-star text-amber-400 text-xl"></i></div>
+                            <div class="text-xs text-slate-500 font-medium">Más de 800 valoraciones</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-2xl sm:text-3xl font-bold text-slate-900">8+ Años</div>
+                            <div class="text-xs text-slate-500 font-medium">De experiencia studio</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-2xl sm:text-3xl font-bold text-slate-900">100%</div>
+                            <div class="text-xs text-slate-500 font-medium">Productos Veganos/Cruelty-free</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Stack -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Background Glow Blob -->
+                        <div class="absolute -top-6 -left-6 w-72 h-72 bg-brand-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
+                        <div class="absolute -bottom-6 -right-6 w-72 h-72 bg-rose-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
+
+                        <!-- Main Image Frame -->
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" alt="Peluquería y Manicura Lumière" class="w-full h-[460px] object-cover">
+                            
+                            <!-- Floating Card 1: Hair Specialty -->
+                            <div class="absolute top-6 left-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-brand-100 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-scissors"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-800">Especialistas en Balayage</div>
+                                    <div class="text-[10px] text-slate-500">Técnicas French & Shadow</div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Card 2: Nail Art Specialty -->
+                            <div class="absolute bottom-6 right-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-brand-100 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-hand-sparkles"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-800">Nail Art & Soft Gel</div>
+                                    <div class="text-[10px] text-slate-500">Acabado de Larga Duración</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-brand-600 font-semibold text-sm uppercase tracking-widest">Nuestra Carta de Estilo</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900">Servicios diseñados para realzar tu brillo natural</h2>
+                <p class="text-slate-600">Utilizamos únicamente productos de primera gama internacional para cuidar la salud de tu fibra capilar y la resistencia de tus uñas.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mt-10 mb-12">
+                <button onclick="filterServices('todos')" class="service-tab active px-5 py-2.5 rounded-full text-sm font-semibold transition border border-brand-800 bg-brand-800 text-white shadow-sm" data-category="todos">
+                    Todos los servicios
+                </button>
+                <button onclick="filterServices('peluqueria')" class="service-tab px-5 py-2.5 rounded-full text-sm font-semibold transition border border-brand-200 bg-white text-slate-700 hover:border-brand-400" data-category="peluqueria">
+                    <i class="fa-solid fa-scissors mr-1.5 text-brand-600"></i> Peluquería & Color
+                </button>
+                <button onclick="filterServices('unas')" class="service-tab px-5 py-2.5 rounded-full text-sm font-semibold transition border border-brand-200 bg-white text-slate-700 hover:border-brand-400" data-category="unas">
+                    <i class="fa-solid fa-hand-sparkles mr-1.5 text-brand-600"></i> Manicura & Pedicura
+                </button>
+                <button onclick="filterServices('tratamientos')" class="service-tab px-5 py-2.5 rounded-full text-sm font-semibold transition border border-brand-200 bg-white text-slate-700 hover:border-brand-400" data-category="tratamientos">
+                    <i class="fa-solid fa-pump-soap mr-1.5 text-brand-600"></i> Tratamientos Capilares
+                </button>
+            </div>
+
+            <!-- Services Grid -->
+            <div id="servicesGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Cards inserted via JavaScript or static initial template -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Package Calculator -->
+    <section id="calculadora" class="py-20 bg-brand-50 border-y border-brand-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-brand-600 font-semibold text-sm uppercase tracking-widest">Calculadora Personalizada</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">Crea tu Combo Ideal & Calcula tu Presupuesto</h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Selecciona los tratamientos de peluquería y uñas que deseas combinar. Al juntar más de dos servicios obtendrás un descuento automático en tu cita.
+                    </p>
+
+                    <div class="bg-white p-6 rounded-2xl border border-brand-200 space-y-4 shadow-sm">
+                        <div class="flex items-center gap-3 text-brand-800">
+                            <i class="fa-solid fa-gift text-2xl"></i>
+                            <div>
+                                <h4 class="font-bold text-sm">Beneficios de nuestros Packs</h4>
+                                <p class="text-xs text-slate-500">Ahorra hasta un 15% combinando corte, color y manicura en la misma sesión.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-brand-200 shadow-xl space-y-6">
+                    <h3 class="font-serif text-xl font-bold text-slate-900 border-b border-brand-100 pb-3 flex items-center justify-between">
+                        <span>Personalizar Experiencia</span>
+                        <span class="text-xs font-sans font-normal text-slate-500">Paso a Paso</span>
+                    </h3>
+
+                    <!-- Option Groups -->
+                    <div class="space-y-6">
+                        <!-- Group 1: Hair Length / Base -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-500 tracking-wider mb-3">1. Largo de Cabello</label>
+                            <div class="grid grid-cols-3 gap-3">
+                                <label class="cursor-pointer border-2 border-brand-100 rounded-xl p-3 text-center hover:border-brand-400 transition peer-checked:border-brand-800 bg-slate-50 has-[:checked]:bg-brand-50 has-[:checked]:border-brand-800">
+                                    <input type="radio" name="hairLength" value="corto" class="sr-only" checked onchange="calculateCustomPackage()">
+                                    <span class="block text-sm font-bold text-slate-800">Corto</span>
+                                    <span class="text-[11px] text-slate-500">Hasta hombros</span>
+                                </label>
+                                <label class="cursor-pointer border-2 border-brand-100 rounded-xl p-3 text-center hover:border-brand-400 transition bg-slate-50 has-[:checked]:bg-brand-50 has-[:checked]:border-brand-800">
+                                    <input type="radio" name="hairLength" value="medio" class="sr-only" onchange="calculateCustomPackage()">
+                                    <span class="block text-sm font-bold text-slate-800">Medio</span>
+                                    <span class="text-[11px] text-slate-500">Media espalda</span>
+                                </label>
+                                <label class="cursor-pointer border-2 border-brand-100 rounded-xl p-3 text-center hover:border-brand-400 transition bg-slate-50 has-[:checked]:bg-brand-50 has-[:checked]:border-brand-800">
+                                    <input type="radio" name="hairLength" value="largo" class="sr-only" onchange="calculateCustomPackage()">
+                                    <span class="block text-sm font-bold text-slate-800">Largo</span>
+                                    <span class="text-[11px] text-slate-500">Cintura o +</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Group 2: Services Checkboxes -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-500 tracking-wider mb-3">2. Selecciona tus Servicios</label>
+                            <div class="grid sm:grid-cols-2 gap-3" id="calcCheckboxes">
+                                <label class="flex items-center justify-between p-3 rounded-xl border border-brand-100 hover:bg-brand-50/50 cursor-pointer transition">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" value="corte" data-price="25" checked class="calc-check w-4 h-4 text-brand-800 rounded focus:ring-brand-500" onchange="calculateCustomPackage()">
+                                        <span class="text-sm font-medium text-slate-700">Corte + Peinado / Secado</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-brand-800">25€</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3 rounded-xl border border-brand-100 hover:bg-brand-50/50 cursor-pointer transition">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" value="balayage" data-price="65" class="calc-check w-4 h-4 text-brand-800 rounded focus:ring-brand-500" onchange="calculateCustomPackage()">
+                                        <span class="text-sm font-medium text-slate-700">Balayage / Mechas</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-brand-800">65€</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3 rounded-xl border border-brand-100 hover:bg-brand-50/50 cursor-pointer transition">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" value="tratamiento" data-price="30" class="calc-check w-4 h-4 text-brand-800 rounded focus:ring-brand-500" onchange="calculateCustomPackage()">
+                                        <span class="text-sm font-medium text-slate-700">Tratamiento Keratina</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-brand-800">30€</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3 rounded-xl border border-brand-100 hover:bg-brand-50/50 cursor-pointer transition">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" value="manicura" data-price="22" checked class="calc-check w-4 h-4 text-brand-800 rounded focus:ring-brand-500" onchange="calculateCustomPackage()">
+                                        <span class="text-sm font-medium text-slate-700">Manicura Semipermanente</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-brand-800">22€</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3 rounded-xl border border-brand-100 hover:bg-brand-50/50 cursor-pointer transition">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" value="pedicura" data-price="32" class="calc-check w-4 h-4 text-brand-800 rounded focus:ring-brand-500" onchange="calculateCustomPackage()">
+                                        <span class="text-sm font-medium text-slate-700">Pedicura Spa Completa</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-brand-800">32€</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3 rounded-xl border border-brand-100 hover:bg-brand-50/50 cursor-pointer transition">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" value="nailart" data-price="10" class="calc-check w-4 h-4 text-brand-800 rounded focus:ring-brand-500" onchange="calculateCustomPackage()">
+                                        <span class="text-sm font-medium text-slate-700">Nail Art Especial</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-brand-800">10€</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Summary Box -->
+                    <div class="bg-brand-900 text-white p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <div class="text-xs text-brand-200">Presupuesto Estimado</div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="font-serif text-3xl font-bold" id="totalCalcPrice">47€</span>
+                                <span class="text-xs text-emerald-400 font-semibold" id="discountBadge">Descuento aplicado (-10%)</span>
+                            </div>
+                            <div class="text-[11px] text-brand-300 mt-0.5" id="calcTimeEstimate">Tiempo estimado: 1h 45min</div>
+                        </div>
+
+                        <button onclick="bookCalculatedPackage()" class="w-full sm:w-auto bg-brand-200 hover:bg-white text-brand-900 font-bold px-6 py-3 rounded-xl shadow transition text-sm">
+                            Reservar Este Combo
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeria" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-12">
+                <span class="text-brand-600 font-semibold text-sm uppercase tracking-widest">Galería de Resultados</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900">Inspiración & Trabajos Recientes</h2>
+                <p class="text-slate-600">Echa un vistazo a las transformaciones de nuestras clientas en nuestro salón.</p>
+            </div>
+
+            <!-- Filter Buttons for Gallery -->
+            <div class="flex justify-center gap-2 mb-8 flex-wrap">
+                <button onclick="filterGallery('all')" class="gal-filter active text-xs font-semibold px-4 py-2 rounded-full border border-brand-800 bg-brand-800 text-white">Todos</button>
+                <button onclick="filterGallery('hair')" class="gal-filter text-xs font-semibold px-4 py-2 rounded-full border border-brand-200 bg-white text-slate-700 hover:border-brand-400">Cabello & Color</button>
+                <button onclick="filterGallery('nails')" class="gal-filter text-xs font-semibold px-4 py-2 rounded-full border border-brand-200 bg-white text-slate-700 hover:border-brand-400">Uñas & Nail Art</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="galleryContainer">
+                <!-- Gallery Item 1 -->
+                <div class="gal-item hair group relative aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition" onclick="openLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1000', 'Balayage Caramelo Soft')">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600" alt="Balayage" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <div class="text-white">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-800/80 px-2 py-0.5 rounded text-brand-100">Peluquería</span>
+                            <h4 class="font-serif font-semibold text-sm mt-1">Balayage Caramelo Soft</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gal-item nails group relative aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition" onclick="openLightbox('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1000', 'Manicura Rusa + Gel Milky')">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600" alt="Nail Art" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <div class="text-white">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-pink-800/80 px-2 py-0.5 rounded text-pink-100">Uñas</span>
+                            <h4 class="font-serif font-semibold text-sm mt-1">Manicura Rusa & Gel Milky</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gal-item hair group relative aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition" onclick="openLightbox('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=1000', 'Corte Bob & Styling Waves')">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=600" alt="Corte Bob" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <div class="text-white">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-brand-800/80 px-2 py-0.5 rounded text-brand-100">Peluquería</span>
+                            <h4 class="font-serif font-semibold text-sm mt-1">Corte Bob & Waves</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gal-item nails group relative aspect-square rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition" onclick="openLightbox('https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&q=80&w=1000', 'Diseño de Uñas Minimalista')">
+                    <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&q=80&w=600" alt="Nail Art Minimal" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <div class="text-white">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-pink-800/80 px-2 py-0.5 rounded text-pink-100">Uñas</span>
+                            <h4 class="font-serif font-semibold text-sm mt-1">Nail Art Minimalista</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="equipo" class="py-20 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-brand-600 font-semibold text-sm uppercase tracking-widest">Nuestras Profesionales</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900">Manos expertas apasionadas por la belleza</h2>
+                <p class="text-slate-600">Cada integrante de nuestro equipo cuenta con formación continua en las últimas tendencias internacionales.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-brand-100 shadow-sm hover:shadow-md transition text-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" alt="Valeria Gómez" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="font-serif text-xl font-bold text-slate-900">Valeria Gómez</h3>
+                        <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Master Colorista & Directora</p>
+                        <p class="text-xs text-slate-500">Especialista en Balayage, Babylights y corrección de color con más de 10 años de trayectoria.</p>
+                        <button onclick="openBookingModal('Valeria Gómez')" class="w-full py-2.5 rounded-xl border border-brand-200 hover:border-brand-800 hover:bg-brand-800 hover:text-white transition text-xs font-bold text-slate-700">
+                            Reservar con Valeria
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-brand-100 shadow-sm hover:shadow-md transition text-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1580894732413-a70d223f6681?auto=format&fit=crop&q=80&w=600" alt="Sofia Rossi" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="font-serif text-xl font-bold text-slate-900">Sofia Rossi</h3>
+                        <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Senior Nail Artist & Soft Gel</p>
+                        <p class="text-xs text-slate-500">Experta en estructuración de uñas de gel, manicura rusa y diseños a mano alzada de alta precisión.</p>
+                        <button onclick="openBookingModal('Sofia Rossi')" class="w-full py-2.5 rounded-xl border border-brand-200 hover:border-brand-800 hover:bg-brand-800 hover:text-white transition text-xs font-bold text-slate-700">
+                            Reservar con Sofia
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-brand-100 shadow-sm hover:shadow-md transition text-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=600" alt="Elena Morales" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="font-serif text-xl font-bold text-slate-900">Elena Morales</h3>
+                        <p class="text-xs font-semibold text-brand-600 uppercase tracking-wider">Especialista en Tratamientos Capilares</p>
+                        <p class="text-xs text-slate-500">Apasionada por la salud de la fibra capilar, botox capilar y alisados orgánicos de larga duración.</p>
+                        <button onclick="openBookingModal('Elena Morales')" class="w-full py-2.5 rounded-xl border border-brand-200 hover:border-brand-800 hover:bg-brand-800 hover:text-white transition text-xs font-bold text-slate-700">
+                            Reservar con Elena
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="resenas" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-brand-600 font-semibold text-sm uppercase tracking-widest">Opiniones Reales</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-2">Lo que nuestras clientas dicen</h2>
+                </div>
+                <button onclick="openReviewModal()" class="self-start md:self-auto px-5 py-2.5 border border-brand-300 hover:bg-brand-50 rounded-full font-semibold text-sm text-brand-800 transition">
+                    <i class="fa-regular fa-pen-to-square mr-1"></i> Dejar una Reseña
+                </button>
+            </div>
+
+            <!-- Reviews Grid -->
+            <div class="grid md:grid-cols-3 gap-8" id="reviewsContainer">
+                <!-- Review Card 1 -->
+                <div class="bg-brand-50/60 p-6 rounded-3xl border border-brand-100 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic">"Mi Balayage quedó idéntico a la foto que llevé de muestra. El trato de Valeria fue impecable y el salón huele delicioso. ¡Mi lugar favorito!"</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-brand-200/50">
+                        <div class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center font-bold text-brand-800 text-sm">
+                            CM
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-800">Carmen Méndez</div>
+                            <div class="text-[11px] text-slate-500">Cliente desde 2022</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="bg-brand-50/60 p-6 rounded-3xl border border-brand-100 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic">"La manicura semipermanente me dura intacta casi un mes sin descascarillarse. Sofia es una artista con el nail art delicado."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-brand-200/50">
+                        <div class="w-10 h-10 rounded-full bg-pink-200 flex items-center justify-center font-bold text-pink-800 text-sm">
+                            LS
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-800">Laura Sánchez</div>
+                            <div class="text-[11px] text-slate-500">Cliente Frecuente</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="bg-brand-50/60 p-6 rounded-3xl border border-brand-100 flex flex-col justify-between space-y-4">
+                    <div class="space-y-3">
+                        <div class="flex text-amber-400 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic">"El tratamiento de botox capilar le devolvió el brillo y la suave textura a mi pelo castigado por el sol. ¡Súper recomendadas!"</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-brand-200/50">
+                        <div class="w-10 h-10 rounded-full bg-amber-200 flex items-center justify-center font-bold text-amber-800 text-sm">
+                            PR
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-800">Patricia Ruiz</div>
+                            <div class="text-[11px] text-slate-500">Primera Cita</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-brand-50 border-t border-brand-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center space-y-3 mb-10">
+                <span class="text-brand-600 font-semibold text-xs uppercase tracking-widest">Dudas Frecuentes</span>
+                <h2 class="font-serif text-3xl font-bold text-slate-900">Preguntas sobre nuestros servicios</h2>
+            </div>
+
+            <div class="space-y-4" id="faqAccordion">
+                <div class="bg-white rounded-2xl border border-brand-100 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 flex items-center justify-between font-bold text-slate-800 hover:text-brand-600 transition">
+                        <span>¿Cuánto tiempo dura la manicura semipermanente?</span>
+                        <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-3">
+                        Nuestra manicura semipermanente dura en promedio entre 3 y 4 semanas con el brillo intacto, dependiendo del crecimiento natural de tu uña. Utilizamos bases reforzadas de primera calidad.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-brand-100 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 flex items-center justify-between font-bold text-slate-800 hover:text-brand-600 transition">
+                        <span>¿Es necesario reservar cita previa o puedo acudir directamente?</span>
+                        <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-3">
+                        Recomendamos siempre reservar previa cita desde nuestra web o por teléfono para garantizar disponibilidad con tu estilista preferida. También atendemos según disponibilidad en el momento.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-brand-100 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 flex items-center justify-between font-bold text-slate-800 hover:text-brand-600 transition">
+                        <span>¿Qué productos utilizan para la coloración capilar?</span>
+                        <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-3">
+                        Trabajamos exclusivamente con tintes y decoloraciones veganas y sin amoníaco enriquecidas con aceites orgánicos para proteger la salud de la fibra capilar durante la decoloración.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Hours Section -->
+    <section id="contacto" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-brand-600 font-semibold text-sm uppercase tracking-widest">Encuéntranos</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900">Visítanos en nuestro Studio</h2>
+                    <p class="text-slate-600 text-sm">
+                        Un espacio acogedor diseñado para desconectar del estrés diario mientras cuidamos de ti.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Dirección</h4>
+                                <p class="text-xs text-slate-600">Calle Rosa Bella 124, Centro, Madrid</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center shrink-0">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Horario de Atención</h4>
+                                <p class="text-xs text-slate-600">Lunes a Viernes: 10:00 - 20:00 h</p>
+                                <p class="text-xs text-slate-600">Sábados: 09:00 - 18:00 h | Domingos: Cerrado</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Contacto Directo</h4>
+                                <p class="text-xs text-slate-600">hola@lumierestudio.com | +34 912 345 678</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 h-[380px] rounded-3xl overflow-hidden border border-brand-200 shadow-lg relative bg-slate-100">
+                    <!-- Map Mockup Graphic -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12148.917631336118!2d-3.703790!3d40.416775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42287d3a088df1%3A0x6b876353380e227d!2sCentro%2C%20Madrid!5e0!3m2!1ses!2ses!4v1680000000000!5m2!1ses!2ses" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-brand-100 pt-16 pb-12 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <div class="space-y-4">
+                    <a href="#" class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-brand-200 text-brand-900 flex items-center justify-center font-serif text-lg font-bold">
+                            L
+                        </div>
+                        <span class="font-serif text-xl font-bold text-white tracking-tight">Lumière</span>
+                    </a>
+                    <p class="text-xs text-brand-300 leading-relaxed">
+                        Tu espacio de alta belleza para uñas impecables y cabello lleno de vida.
+                    </p>
+                    <div class="flex gap-3 pt-2">
+                        <a href="#" class="w-8 h-8 rounded-full bg-brand-800 flex items-center justify-center hover:bg-brand-700 transition text-sm"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-brand-800 flex items-center justify-center hover:bg-brand-700 transition text-sm"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-brand-800 flex items-center justify-center hover:bg-brand-700 transition text-sm"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-white font-bold text-sm mb-4">Nuestros Servicios</h4>
+                    <ul class="space-y-2 text-xs text-brand-300">
+                        <li><a href="#servicios" class="hover:text-white transition">Balayage & Babylights</a></li>
+                        <li><a href="#servicios" class="hover:text-white transition">Manicura Semipermanente</a></li>
+                        <li><a href="#servicios" class="hover:text-white transition">Soft Gel / Acrílicas</a></li>
+                        <li><a href="#servicios" class="hover:text-white transition">Botox Capilar & Keratina</a></li>
+                        <li><a href="#servicios" class="hover:text-white transition">Pedicura Spa Rejuvenecedora</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-white font-bold text-sm mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-xs text-brand-300">
+                        <li><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
+                        <li><a href="#calculadora" class="hover:text-white transition">Calculadora de Combos</a></li>
+                        <li><a href="#galeria" class="hover:text-white transition">Galería de Estilos</a></li>
+                        <li><a href="#equipo" class="hover:text-white transition">Equipo de Estilistas</a></li>
+                        <li><a href="#resenas" class="hover:text-white transition">Opiniones de Clientes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="space-y-3">
+                    <h4 class="font-serif text-white font-bold text-sm">Novedades y Ofertas</h4>
+                    <p class="text-xs text-brand-300">Suscríbete para recibir promociones exclusivas y consejos de belleza.</p>
+                    <form onsubmit="handleNewsletter(event)" class="space-y-2">
+                        <input type="email" placeholder="Tu correo electrónico" required class="w-full px-3 py-2 text-xs rounded-xl bg-brand-800 border border-brand-700 text-white placeholder-brand-400 focus:outline-none focus:border-brand-300">
+                        <button type="submit" class="w-full bg-brand-200 hover:bg-white text-brand-900 font-bold text-xs py-2 rounded-xl transition">
+                            Suscribirme
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-brand-800 flex flex-col sm:flex-row justify-between items-center text-[11px] text-brand-400 gap-4">
+                <p>&copy; 2026 Lumière Hair & Nail Studio. Todos los derechos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-brand-200">Aviso Legal</a>
+                    <a href="#" class="hover:text-brand-200">Política de Privacidad</a>
+                    <a href="#" class="hover:text-brand-200">Políticas de Cancelación</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal (Multi-step Wizard) -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-xl rounded-3xl shadow-2xl border border-brand-100 overflow-hidden relative animate-fade-in my-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Modal Header -->
+            <div class="bg-brand-900 text-white p-6 flex justify-between items-center shrink-0">
+                <div>
+                    <h3 class="font-serif text-xl font-bold">Reserva tu Cita en Lumière</h3>
+                    <p class="text-xs text-brand-200">Selecciona tu tratamiento, profesional y horario</p>
+                </div>
+                <button onclick="closeBookingModal()" class="w-8 h-8 rounded-full bg-brand-800 text-brand-200 flex items-center justify-center hover:text-white hover:bg-brand-700 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Steps Indicator -->
+            <div class="bg-brand-50 px-6 py-3 border-b border-brand-100 flex justify-between text-xs font-semibold text-slate-500 shrink-0">
+                <span id="stepTab1" class="text-brand-800 font-bold">1. Servicio</span>
+                <span id="stepTab2">2. Estilista</span>
+                <span id="stepTab3">3. Fecha & Hora</span>
+                <span id="stepTab4">4. Confirmación</span>
+            </div>
+
+            <!-- Wizard Form Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar space-y-6 flex-1">
+                
+                <!-- STEP 1: Select Service -->
+                <div id="wizardStep1" class="space-y-4">
+                    <h4 class="font-bold text-slate-800 text-sm">Elige el servicio principal:</h4>
+                    <div class="space-y-2" id="modalServiceList">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- STEP 2: Select Specialist -->
+                <div id="wizardStep2" class="space-y-4 hidden">
+                    <h4 class="font-bold text-slate-800 text-sm">Elige tu especialista preferida:</h4>
+                    <div class="grid grid-cols-2 gap-3" id="modalSpecialistList">
+                        <label class="cursor-pointer border border-brand-200 p-3 rounded-2xl flex items-center gap-3 hover:border-brand-800 has-[:checked]:bg-brand-50 has-[:checked]:border-brand-800 transition">
+                            <input type="radio" name="modalStylist" value="Cualquiera Disponibilidad" checked class="sr-only">
+                            <div class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center font-bold text-brand-800 text-xs">C</div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-800">Cualquier Estilista</div>
+                                <div class="text-[10px] text-slate-500">Mayor disponibilidad</div>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer border border-brand-200 p-3 rounded-2xl flex items-center gap-3 hover:border-brand-800 has-[:checked]:bg-brand-50 has-[:checked]:border-brand-800 transition">
+                            <input type="radio" name="modalStylist" value="Valeria Gómez" class="sr-only">
+                            <div class="w-10 h-10 rounded-full bg-brand-300 flex items-center justify-center font-bold text-brand-900 text-xs">V</div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-800">Valeria Gómez</div>
+                                <div class="text-[10px] text-slate-500">Colorista Master</div>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer border border-brand-200 p-3 rounded-2xl flex items-center gap-3 hover:border-brand-800 has-[:checked]:bg-brand-50 has-[:checked]:border-brand-800 transition">
+                            <input type="radio" name="modalStylist" value="Sofia Rossi" class="sr-only">
+                            <div class="w-10 h-10 rounded-full bg-pink-200 flex items-center justify-center font-bold text-pink-900 text-xs">S</div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-800">Sofia Rossi</div>
+                                <div class="text-[10px] text-slate-500">Nail Specialist</div>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer border border-brand-200 p-3 rounded-2xl flex items-center gap-3 hover:border-brand-800 has-[:checked]:bg-brand-50 has-[:checked]:border-brand-800 transition">
+                            <input type="radio" name="modalStylist" value="Elena Morales" class="sr-only">
+                            <div class="w-10 h-10 rounded-full bg-amber-200 flex items-center justify-center font-bold text-amber-900 text-xs">E</div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-800">Elena Morales</div>
+                                <div class="text-[10px] text-slate-500">Tratamientos Capilares</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Date & Time -->
+                <div id="wizardStep3" class="space-y-4 hidden">
+                    <h4 class="font-bold text-slate-800 text-sm">Selecciona fecha y hora:</h4>
+                    <div>
+                        <label class="block text-xs text-slate-500 font-semibold mb-1">Fecha</label>
+                        <input type="date" id="bookingDate" class="w-full px-3 py-2.5 rounded-xl border border-brand-200 text-sm font-medium focus:ring-brand-500 focus:border-brand-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-slate-500 font-semibold mb-2">Horarios disponibles</label>
+                        <div class="grid grid-cols-3 sm:grid-cols-4 gap-2" id="timeSlotContainer">
+                            <button onclick="selectTimeSlot(this)" type="button" class="time-slot border border-brand-200 rounded-xl py-2 text-xs font-semibold hover:border-brand-800 transition">10:00 h</button>
+                            <button onclick="selectTimeSlot(this)" type="button" class="time-slot border border-brand-200 rounded-xl py-2 text-xs font-semibold hover:border-brand-800 transition">11:30 h</button>
+                            <button onclick="selectTimeSlot(this)" type="button" class="time-slot border border-brand-200 rounded-xl py-2 text-xs font-semibold hover:border-brand-800 transition">13:00 h</button>
+                            <button onclick="selectTimeSlot(this)" type="button" class="time-slot border border-brand-200 rounded-xl py-2 text-xs font-semibold hover:border-brand-800 transition">16:00 h</button>
+                            <button onclick="selectTimeSlot(this)" type="button" class="time-slot border border-brand-200 rounded-xl py-2 text-xs font-semibold hover:border-brand-800 transition">17:30 h</button>
+                            <button onclick="selectTimeSlot(this)" type="button" class="time-slot border border-brand-200 rounded-xl py-2 text-xs font-semibold hover:border-brand-800 transition">19:00 h</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Personal Details -->
+                <div id="wizardStep4" class="space-y-4 hidden">
+                    <h4 class="font-bold text-slate-800 text-sm">Datos de contacto para confirmar:</h4>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-xs text-slate-500 font-semibold mb-1">Nombre Completo *</label>
+                            <input type="text" id="clientName" placeholder="Ej. Ana García" class="w-full px-3 py-2 rounded-xl border border-brand-200 text-sm">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs text-slate-500 font-semibold mb-1">Teléfono / WhatsApp *</label>
+                                <input type="tel" id="clientPhone" placeholder="600 000 000" class="w-full px-3 py-2 rounded-xl border border-brand-200 text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-500 font-semibold mb-1">Email *</label>
+                                <input type="email" id="clientEmail" placeholder="ana@ejemplo.com" class="w-full px-3 py-2 rounded-xl border border-brand-200 text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-500 font-semibold mb-1">Comentario o nota adicional</label>
+                            <textarea id="clientNotes" placeholder="Ej. Tengo el pelo con tinte previo, o prefiero esmalte rosa pastel..." rows="2" class="w-full px-3 py-2 rounded-xl border border-brand-200 text-sm"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Booking Summary Box -->
+                    <div class="bg-brand-50 p-4 rounded-2xl border border-brand-200 space-y-1 text-xs">
+                        <div class="font-bold text-brand-900 border-b border-brand-200 pb-1 mb-2">Resumen de Reserva:</div>
+                        <div class="flex justify-between"><span class="text-slate-500">Servicio:</span> <span id="summaryService" class="font-semibold text-slate-800">-</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">Estilista:</span> <span id="summaryStylist" class="font-semibold text-slate-800">-</span></div>
+                        <div class="flex justify-between"><span class="text-slate-500">Fecha y Hora:</span> <span id="summaryDateTime" class="font-semibold text-slate-800">-</span></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer Controls -->
+            <div class="bg-brand-50 p-4 border-t border-brand-100 flex justify-between items-center shrink-0">
+                <button id="prevStepBtn" onclick="prevStep()" class="px-4 py-2 border border-brand-300 rounded-xl text-xs font-bold text-slate-700 hover:bg-white transition hidden">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Anterior
+                </button>
+                <div class="ml-auto">
+                    <button id="nextStepBtn" onclick="nextStep()" class="px-6 py-2.5 bg-brand-800 hover:bg-brand-900 text-white rounded-xl text-xs font-bold shadow transition flex items-center gap-2">
+                        <span>Siguiente</span> <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeLightbox()">
+        <div class="relative max-w-4xl w-full text-center" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white text-2xl hover:text-brand-300">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="lightboxImg" src="" alt="Trabajo Lumiere" class="max-h-[80vh] mx-auto rounded-2xl shadow-2xl">
+            <h3 id="lightboxTitle" class="text-white font-serif text-lg font-semibold mt-4"></h3>
+        </div>
+    </div>
+
+    <!-- Leave Review Modal -->
+    <div id="reviewModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white max-w-md w-full rounded-3xl p-6 border border-brand-100 shadow-2xl space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="font-serif font-bold text-lg text-slate-900">Escribir una Opinión</h3>
+                <button onclick="closeReviewModal()" class="text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="submitReview(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Tu Nombre</label>
+                    <input type="text" id="revName" required placeholder="Tu nombre" class="w-full px-3 py-2 rounded-xl border border-brand-200 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Valoración</label>
+                    <div class="flex gap-2 text-amber-400 text-xl cursor-pointer" id="starRating">
+                        <i class="fa-solid fa-star" onclick="setRating(1)"></i>
+                        <i class="fa-solid fa-star" onclick="setRating(2)"></i>
+                        <i class="fa-solid fa-star" onclick="setRating(3)"></i>
+                        <i class="fa-solid fa-star" onclick="setRating(4)"></i>
+                        <i class="fa-solid fa-star" onclick="setRating(5)"></i>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Tu Experiencia</label>
+                    <textarea id="revComment" required rows="3" placeholder="Cuéntanos qué tal te pareció la atención y el resultado..." class="w-full px-3 py-2 rounded-xl border border-brand-200 text-sm"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brand-800 text-white font-bold py-2.5 rounded-xl text-xs hover:bg-brand-900 transition">
+                    Publicar Reseña
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Action -->
+    <a href="https://wa.me/34912345678" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-2xl transition transform hover:scale-110" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Services Database
+        const servicesData = [
+            {
+                id: 'balayage-pro',
+                category: 'peluqueria',
+                title: 'Balayage Premium & Matiz',
+                duration: '2h 30min',
+                price: 75,
+                tag: 'Popular',
+                description: 'Técnica de degradado natural con aclarado suave, diseño personalizado y matización brillante.',
+                image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 'corte-peinado',
+                category: 'peluqueria',
+                title: 'Corte Estilo + Peinado / Waves',
+                duration: '50min',
+                price: 28,
+                tag: 'Básico',
+                description: 'Asesoramiento de visagismo, lavado relajante con masaje craneal, corte y peinado con ondas.',
+                image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 'manicura-semi',
+                category: 'unas',
+                title: 'Manicura Semipermanente Rusa',
+                duration: '45min',
+                price: 24,
+                tag: 'Estrella',
+                description: 'Limpieza profunda de cutícula con torno, nivelación de uña natural y esmaltado de alta duración.',
+                image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 'soft-gel',
+                category: 'unas',
+                title: 'Extensiones Soft Gel / Acrílico',
+                duration: '1h 30min',
+                price: 45,
+                tag: 'Tendencia',
+                description: 'Uñas más largas con tip de gel flexible, acabado ultra natural y resistencia superior.',
+                image: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 'botox-capilar',
+                category: 'tratamientos',
+                title: 'Botox Capilar Reconstructivo',
+                duration: '1h 15min',
+                price: 40,
+                tag: 'Tratamiento',
+                description: 'Restauración intensiva de aminoácidos y ácido hialurónico para eliminar encrespamiento y sellar puntas.',
+                image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=600'
+            },
+            {
+                id: 'pedicura-spa',
+                category: 'unas',
+                title: 'Pedicura Spa Rejuvenecedora',
+                duration: '1h 00min',
+                price: 35,
+                tag: 'Relax',
+                description: 'Exfoliación con sales marinas, tratamiento de durezas, masaje hidratante y esmaltado semipermanente.',
+                image: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=600'
+            }
+        ];
+
+        let currentWizardStep = 1;
+        let selectedServiceForBooking = servicesData[0];
+        let selectedTime = '10:00 h';
+        let currentRating = 5;
+
+        // Initialize Page
+        window.addEventListener('DOMContentLoaded', () => {
+            renderServices('todos');
+            populateModalServices();
+            // Set default date picker to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('bookingDate').value = tomorrow.toISOString().split('T')[0];
+            calculateCustomPackage();
+        });
+
+        // Service Rendering Logic
+        function renderServices(category) {
+            const container = document.getElementById('servicesGrid');
+            container.innerHTML = '';
+
+            const filtered = category === 'todos' 
+                ? servicesData 
+                : servicesData.filter(s => s.category === category);
+
+            filtered.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'bg-brand-50/50 rounded-3xl border border-brand-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group';
+                card.innerHTML = `
+                    <div>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="${service.image}" alt="${service.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-800 shadow-sm">
+                                ${service.tag}
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-semibold text-slate-500"><i class="fa-regular fa-clock mr-1"></i> ${service.duration}</span>
+                                <span class="font-serif font-bold text-2xl text-brand-800">${service.price}€</span>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl text-slate-900 group-hover:text-brand-600 transition">${service.title}</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">${service.description}</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="quickBook('${service.id}')" class="w-full bg-white hover:bg-brand-800 hover:text-white border border-brand-200 text-brand-800 font-bold py-2.5 rounded-2xl transition text-xs flex items-center justify-center gap-2 shadow-sm">
+                            <i class="fa-regular fa-calendar-plus"></i> Reservar Servicio
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterServices(category) {
+            document.querySelectorAll('.service-tab').forEach(btn => {
+                if(btn.dataset.category === category) {
+                    btn.className = "service-tab active px-5 py-2.5 rounded-full text-sm font-semibold transition border border-brand-800 bg-brand-800 text-white shadow-sm";
+                } else {
+                    btn.className = "service-tab px-5 py-2.5 rounded-full text-sm font-semibold transition border border-brand-200 bg-white text-slate-700 hover:border-brand-400";
+                }
+            });
+            renderServices(category);
+        }
+
+        // Calculator Logic
+        function calculateCustomPackage() {
+            const lengthRadio = document.querySelector('input[name="hairLength"]:checked');
+            let baseMultiplier = 1;
+            if(lengthRadio) {
+                if(lengthRadio.value === 'medio') baseMultiplier = 1.1;
+                if(lengthRadio.value === 'largo') baseMultiplier = 1.25;
+            }
+
+            const checkedBoxes = document.querySelectorAll('.calc-check:checked');
+            let rawTotal = 0;
+            let count = checkedBoxes.length;
+
+            checkedBoxes.forEach(chk => {
+                let price = parseFloat(chk.dataset.price);
+                if(chk.value === 'corte' || chk.value === 'balayage' || chk.value === 'tratamiento') {
+                    price = price * baseMultiplier;
+                }
+                rawTotal += price;
+            });
+
+            // Discount if >= 2 items
+            let discountPercent = count >= 2 ? 0.15 : 0;
+            let finalTotal = rawTotal * (1 - discountPercent);
+
+            const totalEl = document.getElementById('totalCalcPrice');
+            const discountBadge = document.getElementById('discountBadge');
+            const timeEst = document.getElementById('calcTimeEstimate');
+
+            totalEl.innerText = `${Math.round(finalTotal)}€`;
+
+            if(count >= 2) {
+                discountBadge.innerText = 'Descuento Combo -15% Aplicado';
+                discountBadge.className = 'text-xs text-emerald-600 font-semibold';
+            } else {
+                discountBadge.innerText = 'Agrega 2+ servicios para 15% OFF';
+                discountBadge.className = 'text-xs text-brand-600 font-medium';
+            }
+
+            let mins = count * 35 + 20;
+            let hours = Math.floor(mins / 60);
+            let remMins = mins % 60;
+            timeEst.innerText = `Tiempo estimado: ${hours > 0 ? hours + 'h ' : ''}${remMins}min`;
+        }
+
+        function bookCalculatedPackage() {
+            openBookingModal();
+        }
+
+        // Gallery Filter
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gal-item');
+            document.querySelectorAll('.gal-filter').forEach(btn => {
+                btn.className = 'gal-filter text-xs font-semibold px-4 py-2 rounded-full border border-brand-200 bg-white text-slate-700 hover:border-brand-400';
+            });
+            event.target.className = 'gal-filter active text-xs font-semibold px-4 py-2 rounded-full border border-brand-800 bg-brand-800 text-white';
+
+            items.forEach(item => {
+                if(category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function openLightbox(imgUrl, title) {
+            document.getElementById('lightboxImg').src = imgUrl;
+            document.getElementById('lightboxTitle').innerText = title;
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // Booking Wizard Navigation
+        function populateModalServices() {
+            const list = document.getElementById('modalServiceList');
+            list.innerHTML = '';
+            servicesData.forEach((s, idx) => {
+                const label = document.createElement('label');
+                label.className = 'cursor-pointer border border-brand-200 p-3 rounded-2xl flex items-center justify-between hover:border-brand-800 has-[:checked]:bg-brand-50 has-[:checked]:border-brand-800 transition block';
+                label.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <input type="radio" name="modalService" value="${s.id}" ${idx===0?'checked':''} class="sr-only" onchange="selectedServiceForBooking = servicesData.find(serv => serv.id === '${s.id}')">
+                        <div>
+                            <div class="text-xs font-bold text-slate-800">${s.title}</div>
+                            <div class="text-[10px] text-slate-500">${s.duration}</div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-bold text-brand-800">${s.price}€</span>
+                `;
+                list.appendChild(label);
+            });
+        }
+
+        function openBookingModal(stylistName = null) {
+            currentWizardStep = 1;
+            updateWizardUI();
+            if(stylistName) {
+                const radios = document.querySelectorAll('input[name="modalStylist"]');
+                radios.forEach(r => {
+                    if(r.value === stylistName) r.checked = true;
+                });
+            }
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function quickBook(serviceId) {
+            selectedServiceForBooking = servicesData.find(s => s.id === serviceId);
+            openBookingModal();
+        }
+
+        function selectTimeSlot(btn) {
+            document.querySelectorAll('.time-slot').forEach(b => {
+                b.className = 'time-slot border border-brand-200 rounded-xl py-2 text-xs font-semibold hover:border-brand-800 transition';
+            });
+            btn.className = 'time-slot border border-brand-800 bg-brand-800 text-white rounded-xl py-2 text-xs font-semibold transition';
+            selectedTime = btn.innerText;
+        }
+
+        function updateWizardUI() {
+            // Hide all steps
+            for(let i=1; i<=4; i++) {
+                document.getElementById(`wizardStep${i}`).classList.add('hidden');
+                document.getElementById(`stepTab${i}`).className = i <= currentWizardStep ? 'text-brand-800 font-bold' : 'text-slate-400';
+            }
+            // Show current step
+            document.getElementById(`wizardStep${currentWizardStep}`).classList.remove('hidden');
+
+            // Button states
+            const prevBtn = document.getElementById('prevStepBtn');
+            const nextBtn = document.getElementById('nextStepBtn');
+
+            if(currentWizardStep === 1) {
+                prevBtn.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+            }
+
+            if(currentWizardStep === 4) {
+                nextBtn.innerHTML = `<span>Confirmar Cita</span> <i class="fa-solid fa-check"></i>`;
+                // Fill Summary
+                document.getElementById('summaryService').innerText = selectedServiceForBooking ? selectedServiceForBooking.title : 'Servicio Seleccionado';
+                const chosenStylist = document.querySelector('input[name="modalStylist"]:checked');
+                document.getElementById('summaryStylist').innerText = chosenStylist ? chosenStylist.value : 'Cualquiera';
+                const chosenDate = document.getElementById('bookingDate').value;
+                document.getElementById('summaryDateTime').innerText = `${chosenDate} a las ${selectedTime}`;
+            } else {
+                nextBtn.innerHTML = `<span>Siguiente</span> <i class="fa-solid fa-arrow-right"></i>`;
+            }
+        }
+
+        function nextStep() {
+            if(currentWizardStep < 4) {
+                currentWizardStep++;
+                updateWizardUI();
+            } else {
+                // Submit logic
+                const name = document.getElementById('clientName').value.trim();
+                const phone = document.getElementById('clientPhone').value.trim();
+                if(!name || !phone) {
+                    alert('Por favor completa tu nombre y teléfono para confirmar la reserva.');
+                    return;
+                }
+
+                alert(`¡Gracias ${name}! Tu cita para "${selectedServiceForBooking.title}" ha sido agendada con éxito. Te enviamos una confirmación por WhatsApp.`);
+                closeBookingModal();
+            }
+        }
+
+        function prevStep() {
+            if(currentWizardStep > 1) {
+                currentWizardStep--;
+                updateWizardUI();
+            }
+        }
+
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            if(content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openReviewModal() {
+            document.getElementById('reviewModal').classList.remove('hidden');
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.add('hidden');
+        }
+
+        function setRating(r) {
+            currentRating = r;
+            const stars = document.querySelectorAll('#starRating i');
+            stars.forEach((s, idx) => {
+                if(idx < r) {
+                    s.className = "fa-solid fa-star";
+                } else {
+                    s.className = "fa-regular fa-star";
+                }
+            });
+        }
+
+        function submitReview(e) {
+            e.preventDefault();
+            const name = document.getElementById('revName').value;
+            const comment = document.getElementById('revComment').value;
+
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            const newCard = document.createElement('div');
+            newCard.className = 'bg-brand-50/60 p-6 rounded-3xl border border-brand-100 flex flex-col justify-between space-y-4';
+            
+            let starsHtml = '';
+            for(let i=0; i<5; i++) {
+                starsHtml += i < currentRating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+            }
+
+            newCard.innerHTML = `
+                <div class="space-y-3">
+                    <div class="flex text-amber-400 text-sm">
+                        ${starsHtml}
+                    </div>
+                    <p class="text-slate-700 text-sm italic">"${comment}"</p>
+                </div>
+                <div class="flex items-center gap-3 pt-4 border-t border-brand-200/50">
+                    <div class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center font-bold text-brand-800 text-sm">
+                        ${name.substring(0,2).toUpperCase()}
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-slate-800">${name}</div>
+                        <div class="text-[11px] text-slate-500">Reseña Reciente</div>
+                    </div>
+                </div>
+            `;
+
+            reviewsContainer.prepend(newCard);
+            alert('¡Gracias por tu valoración!');
+            closeReviewModal();
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            alert('¡Te has suscrito con éxito a nuestro club exclusivo Lumière!');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
